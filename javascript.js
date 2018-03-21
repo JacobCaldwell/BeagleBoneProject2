@@ -8,10 +8,13 @@ $(document).ready(function(){
      		 $("#current-time").text(date);
  	 }
     getIP();
+	current_date();
+	getUp();
+	getTemp();
 	setInterval(current_date, 1000);
 	setInterval(getUp,1000);
-	setInterval(test,100);
-
+	setInterval(getSwitch,100);
+	setInterval(getTemp,5000);
 });
 
 function getUp(){
@@ -37,10 +40,21 @@ function getIP(){
     });
 }
 
-function test(){
+function writeTemp(){
     var uptime ='';
     $.ajax({ url: 'index.php',
-        data: {action: 'test'},
+        data: {action: 'writeTemp'},
+        type: 'post',
+        success: function(data) {
+            // $('#server-ip').text(data);
+        }
+    });
+}
+
+function getSwitch(){
+    var uptime ='';
+    $.ajax({ url: 'index.php',
+        data: {action: 'getSwitch'},
         type: 'post',
         success: function(data) {
             change_switch(data.replace(/[\n\r]+/g, ''));
@@ -48,10 +62,17 @@ function test(){
     });
 }
 
-//function getUp2(){
-//	var ut = "<?php serverUp();?>";
-//	console.log(ut);
-//}
+function getTemp(){
+    var uptime ='';
+    $.ajax({ url: 'index.php',
+        data: {action: 'getTemp'},
+        type: 'post',
+        success: function(data) {
+            $("#current-temp").text(data);
+
+        }
+    });
+}
 
 
 function change_switch(data){
@@ -78,7 +99,6 @@ function change_switch(data){
                     $('#switch1').addClass("card bg-success");
                     $("#switch1_label").text('ON');
                     $("#switch1_history").text(new Date().toLocaleString());
-
                     break
             }
         }
@@ -89,15 +109,12 @@ function change_switch(data){
                     $('#switch2').addClass("card bg-danger");
                     $("#switch2_label").text('OFF');
                     $("#switch2_history").text(new Date().toLocaleString());
-
                     break
                 case '1':
                     $('#switch2').removeClass();
                     $('#switch2').addClass("card bg-success");
                     $("#switch2_label").text('ON');
                     $("#switch2_history").text(new Date().toLocaleString());
-
-
                     break
             }
         }
