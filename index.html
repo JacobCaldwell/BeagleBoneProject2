@@ -49,22 +49,40 @@
             </div>
         </div>
 
-        <div class="row pt-5">
+        <div class="row pt-3">
+
+            <div class="col-md-4">
+                <p class="lead">Lowest Temp</p>
+            </div>
+
+            <div class="col-md-4">
+                <p class="lead">
+                    <u>Current Temperature</u>
+                </p>
+            </div>
+            <div class="col-md-4">
+                <p class="lead">Highest Temp</p>
+            </div>
+
+            <div class="col-md-4">
+                <h3><span id="low-temp"></span><span>ºF</span></h3>
+            </div>
+
+            <div class="col-md-4">
+                <h1><span id="current-temp"></span><span>ºF</span></h1>
+            </div>
+
+            <div class="col-md-4">
+                <h3><span id="high-temp"></span><span>ºF</span></h3>
+            </div>
+
+
+        </div>
+
+        <div class="row pt-2">
             <div class="col-md-3"></div>
             <div class="col-md-6">
-                <div class="col-md-12">
-                    <p class="lead">
-                        <u>Current Temperature</u>
-                    </p>
-                </div>
-                <div class="col-md-12">
-                    <h1><span id="current-temp"></span><span>ºF</span></h1>
-                </div>
-                <ul class="list-group">
-                    <li class="list-group-item d-flex justify-content-between align-items-center"> Cras justo odio <span class="badge badge-primary badge-pill">14</span> </li>
-                    <li class="list-group-item d-flex justify-content-between align-items-center"> Dapibus ac facilisis in <span class="badge badge-primary badge-pill">2</span> </li>
-                    <li class="list-group-item d-flex justify-content-between align-items-center"> Morbi leo risus <span class="badge badge-primary badge-pill">1</span> </li>
-                </ul>
+                <ul class="list-group" id="temp_history"></ul>
             </div>
             <div class="col-md-3"></div>
         </div>
